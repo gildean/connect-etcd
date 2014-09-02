@@ -1,6 +1,10 @@
 # Connect Etcd
 ============
 
+[![Build Status](https://travis-ci.org/opentable/connect-etcd.svg?branch=master)](https://travis-ci.org/opentable/connect-etcd)
+
+[![NPM](https://nodei.co/npm/connect-etcd.png)](https://nodei.co/npm/connect-etcd)
+
 connect-etcd is a Etcd session store for express backed by [node-etcd](https://github.com/stianeikeland/node-etcd)
 
 ## Installation
