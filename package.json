@@ -1,6 +1,6 @@
 {
   "name": "express-etcd",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "express-etcd is a Etcd session store for express",
   "main": "./index.js",
   "scripts": {

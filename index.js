@@ -13,8 +13,8 @@ function EtcdStore(options) {
     Store.call(this, options);
     var url = options.url ? options.url : defaultHost + ':' + defaultPort;
     this.client = new Etcd(url);
-    this.ttl = options.ttl || oneDay;
-    this.directory = options.directory || 'session';
+    this.ttl = options.ttl;
+    this.directory = options.directory || 'express-session';
 }
 util.inherits(EtcdStore, Store);
 
@@ -28,10 +28,19 @@ EtcdStore.prototype.get = function (sid, callback) {
     });
 };
 
-EtcdStore.prototype.set = function (sid, sess, callback) {
+EtcdStore.prototype.set = function (sid, session, callback) {
     sid = this.directory + '/' + sid;
-    return this.client.set(sid, JSON.stringify(sess), { ttl: this.ttl }, callback);
+    var ttl = this.ttl || ('number' == typeof session.cookie.maxAge ? session.cookie.maxAge / 1000 | 0 : oneDay);
+    return this.client.set(sid, JSON.stringify(session), { ttl: ttl }, callback);
 };
+
+/*
+EtcdStore.prototype.touch = function (sid, session, callback) {
+    sid = this.directory + '/' + sid;
+    var ttl = this.ttl || ('number' == typeof session.cookie.maxAge ? session.cookie.maxAge / 1000 | 0 : oneDay);
+    return this.client.refreshTTL(sid, { ttl: ttl }, callback);
+};
+*/
 
 EtcdStore.prototype.destroy = function (sid, callback) {
     sid = this.directory + '/' + sid;

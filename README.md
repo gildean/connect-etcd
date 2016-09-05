@@ -25,9 +25,13 @@ Usage
 ```js
 var session = require('express-session');
 var EtcdStore = require('express-etcd');
+var options = {
+    url: ['foo.bar:2379', 'baz.bar:2379'],
+    directory: 'mydir'
+};
 
 app.use(session({
-    store: new EtcdStore({ url: ['foo.bar:2379', 'baz.bar:2379'], directory: 'mydir' }),
+    store: new EtcdStore(options),
     secret: 'banaanivarkaita',
     resave: false,
     saveUninitialized: true,
