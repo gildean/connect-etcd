@@ -1,32 +1,42 @@
-# Connect Etcd
+express-etcd
 ============
 
-[![Build Status](https://travis-ci.org/opentable/connect-etcd.svg?branch=master)](https://travis-ci.org/opentable/connect-etcd)
+[![NPM](https://nodei.co/npm/express-etcd.png)](https://nodei.co/npm/express-etcd)
 
-[![NPM](https://nodei.co/npm/connect-etcd.png)](https://nodei.co/npm/connect-etcd)
+express-etcd is a Etcd session store for express backed by [node-etcd](https://github.com/stianeikeland/node-etcd)
 
-connect-etcd is a Etcd session store for express backed by [node-etcd](https://github.com/stianeikeland/node-etcd)
+Installation
+------------
 
-## Installation
+`npm install express-etcd --save`
 
-		$ npm install connect-etcd
 
-## Options
+Options
+-------
 
-	- `url` Etcd host url
-	- `port` Etcd port
-	- `ttl` time-to-live (expiration) in seconds that the key will last for. By default the maxAge of the session cookie will be used.
+  - `url` Etcd host url or urls (either a string or an array)
+  - `directory` Etcd directory to use (default `express-session`)
+  - `ttl` time-to-live (expiration) in seconds that the key will last for. By default the maxAge of the session cookie will be used.
 
-## Usage
 
-	var session = require('express-session');
-	var EtcdStore = require('connect-etcd')(session);
+Usage
+-----
 
-	app.use(session({
-		store: new EtcdStore(options),
-		secret: 'hobknob'
-	}));
+```js
+var session = require('express-session');
+var EtcdStore = require('express-etcd');
 
-# License
+app.use(session({
+    store: new EtcdStore({ url: ['foo.bar:2379', 'baz.bar:2379'], directory: 'mydir' }),
+    secret: 'banaanivarkaita',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+```
 
-	MIT
+
+License
+-------
+
+http://ok.mit-license.org

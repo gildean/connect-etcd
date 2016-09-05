@@ -1,24 +1,24 @@
 {
-  "name": "connect-etcdv2",
-  "version": "1.0.0",
-  "description": "connect-etcd is a Etcd session store for express",
+  "name": "express-etcd",
+  "version": "1.0.2",
+  "description": "express-etcd is a Etcd session store for express",
   "main": "./index.js",
   "scripts": {
     "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gildean/connect-etcd.git"
+    "url": "git://github.com/gildean/express-etcd.git"
   },
-  "author": "Olli Kankaer <info@okloco.com>",
+  "author": "Olli Kankare <info@okloco.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gildean/connect-etcd/issues"
+    "url": "https://github.com/gildean/express-etcd/issues"
   },
-  "homepage": "https://github.com/gildean/connect-etcd",
   "dependencies": {
+    "express-session": "^1.14.1",
     "node-etcd": "^5.0.3",
-    "express-session": "^1.14.1"
+    "validjson": "^0.1.0"
   },
   "devDependencies": {
     "express-session": "*"
