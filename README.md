@@ -17,6 +17,7 @@ Options
   - `url` Etcd host url or urls (either a string or an array)
   - `directory` Etcd directory to use (default `express-session`)
   - `ttl` time-to-live (expiration) in seconds that the key will last for. By default the maxAge of the session cookie will be used.
+  - `etcdOptions` Object passed through to the [node-etcd constructor](https://github.com/stianeikeland/node-etcd#constructor-options)
 
 
 Usage
@@ -27,7 +28,10 @@ var session = require('express-session');
 var EtcdStore = require('express-etcd');
 var options = {
     url: ['foo.bar:2379', 'baz.bar:2379'],
-    directory: 'mydir'
+    directory: 'mydir',
+    etcdOptions: {
+        timeout: 1000
+    }
 };
 
 app.use(session({

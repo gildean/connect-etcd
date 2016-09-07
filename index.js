@@ -12,7 +12,8 @@ function EtcdStore(options) {
     options = options || {};
     Store.call(this, options);
     var url = options.url ? options.url : defaultHost + ':' + defaultPort;
-    this.client = new Etcd(url);
+    var etcdOpts = options.etcdOptions || {};
+    this.client = new Etcd(url, etcdOpts);
     this.ttl = options.ttl;
     this.directory = options.directory || 'express-session';
 }

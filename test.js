@@ -1,7 +1,7 @@
 var assert = require('assert');
 var session = require('express-session');
 var EtcdStore = require('./');
-var store = new EtcdStore({url: '192.168.99.100:32771'});
+var store = new EtcdStore();
 var insert = { cookie: { maxAge: 100000 }, name: 'olli' };
 var insertKey = '123';
 
