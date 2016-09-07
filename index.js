@@ -34,13 +34,7 @@ EtcdStore.prototype.set = function (sid, session, callback) {
     return this.client.set(sid, JSON.stringify(session), { ttl: ttl }, callback);
 };
 
-/*
-EtcdStore.prototype.touch = function (sid, session, callback) {
-    sid = this.directory + '/' + sid;
-    var ttl = this.ttl || ('number' == typeof session.cookie.maxAge ? session.cookie.maxAge / 1000 | 0 : oneDay);
-    return this.client.refreshTTL(sid, { ttl: ttl }, callback);
-};
-*/
+EtcdStore.prototype.touch = EtcdStore.prototype.set;
 
 EtcdStore.prototype.destroy = function (sid, callback) {
     sid = this.directory + '/' + sid;
