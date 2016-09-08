@@ -1,10 +1,10 @@
 {
   "name": "express-etcd",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "express-etcd is a Etcd session store for express",
   "main": "./index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node node_modules/mocha/bin/mocha ./test.js"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,7 @@
     "validjson": "^0.1.0"
   },
   "devDependencies": {
-    "express-session": "*"
-  },
-  "engines": {
-    "node": "*"
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
   }
 }
